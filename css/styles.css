@@ -1,0 +1,73 @@
+body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #081420;
+           
+        }
+
+        /* GÓRNY TYTUŁ */
+        .header {
+            text-align: center;
+            padding: 20px;
+            background: #515363;
+            font-size: 48px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            color:#ddd;
+            
+            
+        }
+
+        /* GŁÓWNY UKŁAD */
+        .main {
+            display: flex;
+            height: calc(100vh - 80px);
+        }
+
+        /* LEWA STRONA */
+        .left {
+            width: 50%;
+            padding: 30px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .results {
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .result-item {
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* PRAWA STRONA */
+        .right {
+            width: 50%;
+            padding: 30px;
+            background: #081420;
+            border-left: 2px solid #ddd;
+        }
+
+        .details {
+            line-height: 1.6;
+            color: #ddd;
+        }
+
+        .details h2 {
+            margin-top: 0;
+        }
