@@ -3,7 +3,7 @@
 <head>
     <style>
         body {
-            background: #081420;
+            background: #303030;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -12,8 +12,8 @@
         }
 
         .ball {
-            width: 100px;
-            height: 100px;
+            width: 150px;
+            height: 150px;
             background-color: silver;
             border-radius: 50%;
             display: flex;
@@ -21,12 +21,19 @@
             /* flex poziome wyśrodkowanie */
             align-items: center;
             /* flex wyśrodkowanie tekstu pion*/
+            z-index: 5;
+        }
+
+        .ball:hover {
+            background-color: #7e7e7e;
+            cursor: pointer;
         }
 
         .small-ball {
+            position: absolute;
             width: 100px;
             height: 100px;
-            background-color: silver;
+            background-color: rgb(170, 170, 170);
             border-radius: 50%;
             display: flex;
             justify-content: center;
@@ -35,26 +42,35 @@
             transition: transform 2s ease;
             /* czas animacji */
         }
+
+        .small-ball:hover,
+        .ball:hover {
+            background-color: #7e7e7e;
+            cursor: pointer;
+        }
     </style>
     <script>
         /*   https://www.w3schools.com/js/js_events_load.asp   */
         /*   https://www.w3schools.com/jsref/met_win_settimeout.asp   */
+        tab = ["un", "happy", "ness"];
+        n = tab.length;
         document.addEventListener("DOMContentLoaded", function () {
-            for (let i = 0; i < 6; i++) {
+            for (let i = 0; i < n; i++) {
                 const smallBall = document.createElement("p");
                 smallBall.classList.add("small-ball");
                 smallBall.id = `ball${i + 1}`;
+                smallBall.innerHTML = tab[i];
                 document.body.appendChild(smallBall);
             }
 
             setTimeout(() => {
-                for (let i = 0; i < 6; i++) {
+                for (let i = 0; i < n; i++) {
                     ball = document.getElementById(`ball${i + 1}`);
-                    angle = (i / 6) * 360;
+                    angle = (i / n) * Math.PI * 2;
                     // cos - x
                     // sin - y
                     // 100 - dalekość
-                    ball.style.transform = `translate(${Math.cos(angle) * 100}px, ${Math.sin(angle) * 100}px)`;
+                    ball.style.transform = `translate(${Math.cos(angle) * 200}px, ${Math.sin(angle) * 200}px)`;
                 }
             }, 300);
         });
@@ -62,7 +78,7 @@
 </head>
 
 <body>
-    <p class="ball">kulka</p>
+    <p class="ball">unhappiness</p>
 
 </body>
 
