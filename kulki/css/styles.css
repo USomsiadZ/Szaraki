@@ -271,3 +271,10 @@ body {
     background-color: #7e7e7e;
     cursor: pointer;
 }
+
+input.ball {
+    text-align: center;
+    border: none;
+    outline: none;
+    font-size: 20px;
+}
