@@ -25,8 +25,6 @@ document.addEventListener("DOMContentLoaded", function () {
     menuHamburgerLabel.className = "hamburger-icon";
     menuHamburgerLabel.textContent = "☰";
 
-
-
     // Tutaj doda się przejścia
     const topMenu = document.createElement("nav");
     topMenu.className = "top-menu";
@@ -68,10 +66,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
     function deleteKulki() {
+        /*
         const smallBalls = document.getElementsByClassName("small-ball");
         for (let i = 0; i < smallBalls.length; i++) {
             smallBalls[i].remove();
         }
+        */
+        stage.querySelectorAll(".small-ball").forEach((el) => el.remove());
     }
     function rozszerzKulki() {
         setTimeout(() => {
@@ -87,11 +88,44 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }, 300);
     }
-    //Window - ogólne okno
+
+    function apiKulki() {
+        const requestBody = {
+            model: "gpt-4o-mini",
+            messages: [
+                {
+                    role: "user",
+                    content:
+                        `Rozłóż morfematycznie słowo "${inputBall.value.trim()}" na kolejne morfemy w kolejności od lewej do prawej (prefiksy, rdzeń, sufiksy). Liczba elementów ma wynikać z analizy — nie narzucaj stałej długości listy. Odpowiedz wyłącznie jednym obiektem JSON, bez markdownu, w formacie {"parts":["fragment", "..."]} gdzie "parts" to tablica o zmiennej długości.`,
+                },
+            ],
+        };
+        fetch("https://api.openai.com/v1/chat/completions", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + api,
+            },
+            body: JSON.stringify(requestBody),
+        })
+            .then((r) => r.json())
+            .then((d) => {
+                const p = JSON.parse(d.choices[0].message.content.match(/\{[\s\S]*\}/)[0]).parts;
+                tab = p.map(String);
+                n = tab.length;
+                deleteKulki();
+                createKulki();
+                rozszerzKulki();
+            })
+            .catch(console.error);
+    }
+
+
+
+    // Window - ogólne okno
     inputBall.addEventListener("keydown", function (p) {
         if (p.key === "Enter") {
-            createKulki();
-            rozszerzKulki();
+            apiKulki();
         }
     });
 });
