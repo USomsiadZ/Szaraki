@@ -5,13 +5,15 @@ const n = tab.length;
 
 document.addEventListener("DOMContentLoaded", function () {
     const stage = document.querySelector(".balls-stage");
-    const input = document.querySelector("input.ball");
-    for (let i = 0; i < n; i++) {
-        const smallBall = document.createElement("p");
-        smallBall.classList.add("small-ball");
-        smallBall.id = `ball${i + 1}`;
-        smallBall.textContent = tab[i];
-        stage.appendChild(smallBall);
+    const inputBall = document.querySelector("input.ball");
+    function createKulki() {
+        for (let i = 0; i < n; i++) {
+            const smallBall = document.createElement("p");
+            smallBall.classList.add("small-ball");
+            smallBall.id = `ball${i + 1}`;
+            smallBall.textContent = tab[i];
+            stage.appendChild(smallBall);
+        }
     }
     function rozszerzKulki() {
         setTimeout(() => {
@@ -27,9 +29,10 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }, 300);
     }
-
-    input.addEventListener("keydown", function (p) {
+    //Window - ogólne okno
+    inputBall.addEventListener("keydown", function (p) {
         if (p.key === "Enter") {
+            createKulki();
             rozszerzKulki();
         }
     });
