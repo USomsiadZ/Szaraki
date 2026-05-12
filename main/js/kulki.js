@@ -1,11 +1,63 @@
 /*   https://www.w3schools.com/js/js_events_load.asp   */
 /*   https://www.w3schools.com/jsref/met_win_settimeout.asp   */
-const tab = ["un", "happy", "ness"];
-const n = tab.length;
+// Najpierw dodanie do stage potem do body - dla wydajności
+let tab = ["un", "happy", "ness"];
+let n = tab.length;
 
 document.addEventListener("DOMContentLoaded", function () {
-    const stage = document.querySelector(".balls-stage");
-    const inputBall = document.querySelector("input.ball");
+    //const stage = document.querySelector(".balls-stage");
+    //const inputBall = document.querySelector("input.ball");
+    // zmienna o nazwie api zawiera klucz do openai
+    //Generowanie html
+    const header = document.createElement("header");
+    header.className = "header";
+
+    const menuContainer = document.createElement("div");
+    menuContainer.className = "menu-container";
+
+    const menuCheckBox = document.createElement("input");
+    menuCheckBox.type = "checkbox";
+    menuCheckBox.id = "menu-toggle";
+    menuCheckBox.className = "menu-checkbox";
+
+    const menuHamburgerLabel = document.createElement("label");
+    menuHamburgerLabel.htmlFor = "menu-toggle";
+    menuHamburgerLabel.className = "hamburger-icon";
+    menuHamburgerLabel.textContent = "☰";
+
+
+
+    // Tutaj doda się przejścia
+    const topMenu = document.createElement("nav");
+    topMenu.className = "top-menu";
+    const menuLinkAbout = document.createElement("a");
+    menuLinkAbout.textContent = "O nas";
+    const menuLinkContact = document.createElement("a");
+    menuLinkContact.textContent = "Kontakt";
+    const menuLinkSettings = document.createElement("a");
+    menuLinkSettings.textContent = "Ustawienia";
+    topMenu.append(menuLinkAbout, menuLinkContact, menuLinkSettings);
+
+    menuContainer.append(menuCheckBox, menuHamburgerLabel, topMenu);
+
+    const menuTitle = document.createElement("div");
+    menuTitle.className = "title";
+    menuTitle.textContent = "Słownik📖";
+
+    header.append(menuContainer, menuTitle);
+
+    // Balls
+    const stage = document.createElement("div");
+    const inputBall = document.createElement("input");
+    stage.className = "balls-stage";
+    inputBall.type = "text";
+    inputBall.className = "ball";
+    inputBall.value = "unhappiness";
+    inputBall.setAttribute("autocomplete", "off");
+    stage.appendChild(inputBall);
+
+    document.body.append(header, stage);
+
     function createKulki() {
         for (let i = 0; i < n; i++) {
             const smallBall = document.createElement("p");
@@ -13,6 +65,12 @@ document.addEventListener("DOMContentLoaded", function () {
             smallBall.id = `ball${i + 1}`;
             smallBall.textContent = tab[i];
             stage.appendChild(smallBall);
+        }
+    }
+    function deleteKulki() {
+        const smallBalls = document.getElementsByClassName("small-ball");
+        for (let i = 0; i < smallBalls.length; i++) {
+            smallBalls[i].remove();
         }
     }
     function rozszerzKulki() {
