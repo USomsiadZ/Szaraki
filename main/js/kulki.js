@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function apiKulki() {
         const requestBody = {
-            model: "gpt-4o-mini",
+            model: "gpt-5.4-mini",
             messages: [
                 {
                     role: "user",
@@ -99,6 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         `Rozłóż morfematycznie słowo "${inputBall.value.trim()}" na kolejne morfemy w kolejności od lewej do prawej (prefiksy, rdzeń, sufiksy). Liczba elementów ma wynikać z analizy — nie narzucaj stałej długości listy. Odpowiedz wyłącznie jednym obiektem JSON, bez markdownu, w formacie {"parts":["fragment", "..."]} gdzie "parts" to tablica o zmiennej długości.`,
                 },
             ],
+
         };
         fetch("https://api.openai.com/v1/chat/completions", {
             method: "POST",
@@ -110,7 +111,15 @@ document.addEventListener("DOMContentLoaded", function () {
         })
             .then((r) => r.json())
             .then((d) => {
+                // Usuwa wstęp gpt. Zostawia tylko JSON → {"parts":["fragment", "..."]}
+                // parts[0] - część włąściwa
                 const p = JSON.parse(d.choices[0].message.content.match(/\{[\s\S]*\}/)[0]).parts;
+                console.log("D", d);
+                console.log("D.choices[0].message.content", d.choices[0].message.content);
+                console.log("JSON.parse(d.choices[0].message.content.match(/\{[\s\S]*\}/)[0])", JSON.parse(d.choices[0].message.content.match(/\{[\s\S]*\}/)[0]));
+                console.log(p);
+                // map to taśma gdzie wykonuje każdą funkcje
+                // String - konwertuje każdy element na string
                 tab = p.map(String);
                 n = tab.length;
                 deleteKulki();
