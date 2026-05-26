@@ -172,6 +172,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     let isError = false;
+    let isUsed = false;
 
     function showError(msg, duration = 1000) {
         isError = true;
@@ -189,6 +190,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function apiKulki() {
+        isUsed = true;
         // Wykład nr 5
         const requestBody = {
             model: "gpt-5.4-mini",
@@ -222,15 +224,19 @@ document.addEventListener("DOMContentLoaded", function () {
                     createKulki();
                     rozszerzKulki();
                 }
+                isUsed = false;
             })
-            .catch(console.error);
+            .catch((err) => {
+                isUsed = false;
+                console.error(err);
+            });
     }
 
 
 
     // Window - ogólne okno
     inputBall.addEventListener("keydown", function (p) {
-        if (p.key === "Enter" && !isError) {
+        if (p.key === "Enter" && !isError && !isUsed) {
             apiKulki();
         }
     });
