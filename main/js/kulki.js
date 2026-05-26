@@ -216,7 +216,6 @@ document.addEventListener("DOMContentLoaded", function () {
             .then((d) => {
                 tab = JSON.parse(d.choices[0].message.content).parts;
                 n = tab.length;
-<<<<<<< HEAD
                 
                 if (n == 1 || n == 0) {
                     deleteKulki();
@@ -231,11 +230,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         inputBall.style.transform = "scale(1)";
                         inputBall.style.transition = "transform 0.3s ease";
                     }, 1000);
-=======
-                zapiszDoHistorii(inputBall.value.trim(), tab);
-                if (n <= 1) {
-                    showError("Brak rozbić!");
->>>>>>> 6f8e5789787dc7bfaf3c80e37b03770eba91c584
                 } else {
                     zapiszDoHistorii(inputBall.value.trim(),tab)
                     deleteKulki();
