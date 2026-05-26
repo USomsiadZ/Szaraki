@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const menuTitle = document.createElement("div");
     menuTitle.className = "title";
-    menuTitle.textContent = "Słownik📖";
+    menuTitle.textContent = "Rozbijacz morfologiczny📖";
 
     header.append(menuContainer, menuTitle);
 
@@ -198,7 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then((d) => {
                 tab = JSON.parse(d.choices[0].message.content).parts;
                 n = tab.length;
-                zapiszDoHistorii(inputBall.value.trim(),tab)
+                
                 if (n == 1 || n == 0) {
                     deleteKulki();
                     let pierwotna_nazwa = inputBall.value;
@@ -213,6 +213,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         inputBall.style.transition = "transform 0.3s ease";
                     }, 1000);
                 } else {
+                    zapiszDoHistorii(inputBall.value.trim(),tab)
                     deleteKulki();
                     createKulki();
                     rozszerzKulki();
