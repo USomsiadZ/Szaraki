@@ -34,13 +34,15 @@ document.addEventListener("DOMContentLoaded", function () {
     menuLinkContact.textContent = "Kontakt";
     const menuLinkSettings = document.createElement("a");
     menuLinkSettings.textContent = "Ustawienia";
-    topMenu.append(menuLinkAbout, menuLinkContact, menuLinkSettings);
+    const menuLinkHistory = document.createElement("a");
+    menuLinkSettings.textContent = "Historia";
+    topMenu.append(menuLinkAbout, menuLinkContact, menuLinkSettings,menuLinkHistory);
 
     menuContainer.append(menuCheckBox, menuHamburgerLabel, topMenu);
 
     const menuTitle = document.createElement("div");
     menuTitle.className = "title";
-    menuTitle.textContent = "Słownik📖";
+    menuTitle.textContent = "Rozbijacz morfologiczny 📖";
 
     header.append(menuContainer, menuTitle);
 
