@@ -38,11 +38,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const menuLinkHistory = document.createElement("a");
     menuLinkHistory.textContent = "Historia";
     topMenu.append(menuLinkAbout, menuLinkContact, menuLinkSettings, menuLinkHistory);
+
     menuContainer.append(menuCheckBox, menuHamburgerLabel, topMenu);
 
     const menuTitle = document.createElement("div");
     menuTitle.className = "title";
-    menuTitle.textContent = "Rozbijacz morfologiczny 📖";
+    menuTitle.textContent = "Słownik📖";
 
     header.append(menuContainer, menuTitle);
 
@@ -198,9 +199,25 @@ document.addEventListener("DOMContentLoaded", function () {
                 tab = JSON.parse(d.choices[0].message.content).parts;
                 n = tab.length;
                 zapiszDoHistorii(inputBall.value.trim(),tab)
-                deleteKulki();
-                createKulki();
-                rozszerzKulki();
+                if (n == 1 || n == 0) {
+                    deleteKulki();
+                    let pierwotna_nazwa = inputBall.value;
+                    inputBall.value = "Brak rozbić!";
+                    inputBall.style.transform = "scale(1.8)";
+                    inputBall.style.transition = "transform 0.3s ease";
+                    inputBall.style.backgroundColor = "#FF6D52";
+                    setTimeout(() => {
+                        inputBall.style.backgroundColor = "";
+                        inputBall.value = pierwotna_nazwa;
+                        inputBall.style.transform = "scale(1)";
+                        inputBall.style.transition = "transform 0.3s ease";
+                    }, 1000);
+                } else {
+                    deleteKulki();
+                    createKulki();
+                    rozszerzKulki();
+                }
+
             })
             .catch(console.error);
     }
