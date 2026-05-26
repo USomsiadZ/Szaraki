@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
     inputBall.setAttribute("autocomplete", "off");
     stage.appendChild(inputBall);
 
-    document.body.append(header, stage,historyStage);
+    document.body.append(header, stage, historyStage);
 
     function createKulki() {
         for (let i = 0; i < n; i++) {
@@ -99,18 +99,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function zapiszDoHistorii(slowo, morfemy) {
         let historia = JSON.parse(localStorage.getItem("morfologiaHistoria")) || [];
-        
+
         historia.unshift({
             slowo: slowo,
             morfemy: morfemy,
-            data: new Date().toISOString() // potrzebne do sortowania chronologicznego
+            data: new Date().toISOString()
         });
-        
+
         localStorage.setItem("morfologiaHistoria", JSON.stringify(historia));
     }
-    
+
     function wyswietlHistorie(sortowanie = "data-desc") {
-        historyStage.innerHTML = ""; 
+        historyStage.innerHTML = "";
 
         let historia = JSON.parse(localStorage.getItem("morfologiaHistoria")) || [];
 
@@ -120,18 +120,18 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if (sortowanie === "data-desc") {
-            historia.sort((a, b) => new Date(b.data) - new Date(a.data)); 
+            historia.sort((a, b) => new Date(b.data) - new Date(a.data));
         } else if (sortowanie === "data-asc") {
-            historia.sort((a, b) => new Date(a.data) - new Date(b.data)); 
+            historia.sort((a, b) => new Date(a.data) - new Date(b.data));
         } else if (sortowanie === "alfabetycznie") {
-            historia.sort((a, b) => a.slowo.localeCompare(b.slowo)); 
+            historia.sort((a, b) => a.slowo.localeCompare(b.slowo));
         } else if (sortowanie === "morfemy-ilosc") {
-            historia.sort((a, b) => b.morfemy.length - a.morfemy.length); 
+            historia.sort((a, b) => b.morfemy.length - a.morfemy.length);
         }
 
         const panelSortowania = document.createElement("div");
         panelSortowania.style.cssText = "display:flex; gap:10px; justify-content:center; padding:20px; flex-wrap:wrap;";
-        
+
         const opcje = [
             { id: "data-desc", text: "Najnowsze" },
             { id: "data-asc", text: "Najstarsze" },
@@ -146,17 +146,16 @@ document.addEventListener("DOMContentLoaded", function () {
             przycisk.addEventListener("click", () => wyswietlHistorie(opcja.id));
             panelSortowania.appendChild(przycisk);
         });
-        
+
         historyStage.appendChild(panelSortowania);
 
-        //lista histiru
         const lista = document.createElement("div");
         lista.style.cssText = "max-width: 600px; margin: 0 auto; padding: 20px; display: flex; flex-direction: column; gap: 15px;";
 
         historia.forEach(wpis => {
             const element = document.createElement("div");
             element.style.cssText = "background: #515363; padding: 15px; border-radius: 8px; color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.2); text-align: left;";
-            
+
             const dataFormat = new Date(wpis.data).toLocaleString("pl-PL");
 
             element.innerHTML = `
@@ -169,10 +168,29 @@ document.addEventListener("DOMContentLoaded", function () {
             lista.appendChild(element);
         });
 
-        historyStage.appendChild(lista);    
-        }
+        historyStage.appendChild(lista);
+    }
+
+    let isError = false;
+    let isUsed = false;
+
+    function showError(msg, duration = 1000) {
+        isError = true;
+        deleteKulki();
+        const savedValue = inputBall.value;
+        inputBall.value = msg;
+        inputBall.style.transform = "scale(1.8)";
+        inputBall.style.backgroundColor = "#FF6D52";
+        setTimeout(() => {
+            inputBall.style.transform = "";
+            inputBall.style.backgroundColor = "";
+            inputBall.value = savedValue;
+            isError = false;
+        }, duration);
+    }
 
     function apiKulki() {
+        isUsed = true;
         // Wykład nr 5
         const requestBody = {
             model: "gpt-5.4-mini",
@@ -198,6 +216,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then((d) => {
                 tab = JSON.parse(d.choices[0].message.content).parts;
                 n = tab.length;
+<<<<<<< HEAD
                 
                 if (n == 1 || n == 0) {
                     deleteKulki();
@@ -212,35 +231,43 @@ document.addEventListener("DOMContentLoaded", function () {
                         inputBall.style.transform = "scale(1)";
                         inputBall.style.transition = "transform 0.3s ease";
                     }, 1000);
+=======
+                zapiszDoHistorii(inputBall.value.trim(), tab);
+                if (n <= 1) {
+                    showError("Brak rozbić!");
+>>>>>>> 6f8e5789787dc7bfaf3c80e37b03770eba91c584
                 } else {
                     zapiszDoHistorii(inputBall.value.trim(),tab)
                     deleteKulki();
                     createKulki();
                     rozszerzKulki();
                 }
-
+                isUsed = false;
             })
-            .catch(console.error);
+            .catch((err) => {
+                isUsed = false;
+                console.error(err);
+            });
     }
 
 
 
     // Window - ogólne okno
     inputBall.addEventListener("keydown", function (p) {
-        if (p.key === "Enter") {
+        if (p.key === "Enter" && !isError && !isUsed) {
             apiKulki();
         }
     });
 
     menuLinkHistory.addEventListener("click", function (e) {
-        e.preventDefault(); 
-        stage.style.display = "none"; 
-        historyStage.style.display = "block"; 
-        wyswietlHistorie("data-desc"); 
+        e.preventDefault();
+        stage.style.display = "none";
+        historyStage.style.display = "block";
+        wyswietlHistorie("data-desc");
         menuCheckBox.checked = false; // zamyka menu po kliknięciu
     });
 
-    menuTitle.addEventListener("click", function() {
+    menuTitle.addEventListener("click", function () {
         stage.style.display = "flex";
         historyStage.style.display = "none";
     });
