@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
         historia.unshift({
             slowo: slowo,
             morfemy: morfemy,
-            data: new Date().toISOString() // potrzebne do sortowania chronologicznego
+            data: new Date().toISOString()
         });
         
         localStorage.setItem("morfologiaHistoria", JSON.stringify(historia));
@@ -149,7 +149,6 @@ document.addEventListener("DOMContentLoaded", function () {
         
         historyStage.appendChild(panelSortowania);
 
-        //lista histiru
         const lista = document.createElement("div");
         lista.style.cssText = "max-width: 600px; margin: 0 auto; padding: 20px; display: flex; flex-direction: column; gap: 15px;";
 
@@ -170,7 +169,24 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         historyStage.appendChild(lista);    
-        }
+    }
+
+    let isError = false;
+
+    function showError(msg, duration = 1000) {
+        isError = true;
+        deleteKulki();
+        const savedValue = inputBall.value;
+        inputBall.value = msg;
+        inputBall.style.transform = "scale(1.8)";
+        inputBall.style.backgroundColor = "#FF6D52";
+        setTimeout(() => {
+            inputBall.style.transform = "";
+            inputBall.style.backgroundColor = "";
+            inputBall.value = savedValue;
+            isError = false;
+        }, duration);
+    }
 
     function apiKulki() {
         // Wykład nr 5
@@ -198,26 +214,14 @@ document.addEventListener("DOMContentLoaded", function () {
             .then((d) => {
                 tab = JSON.parse(d.choices[0].message.content).parts;
                 n = tab.length;
-                zapiszDoHistorii(inputBall.value.trim(),tab)
-                if (n == 1 || n == 0) {
-                    deleteKulki();
-                    let pierwotna_nazwa = inputBall.value;
-                    inputBall.value = "Brak rozbić!";
-                    inputBall.style.transform = "scale(1.8)";
-                    inputBall.style.transition = "transform 0.3s ease";
-                    inputBall.style.backgroundColor = "#FF6D52";
-                    setTimeout(() => {
-                        inputBall.style.backgroundColor = "";
-                        inputBall.value = pierwotna_nazwa;
-                        inputBall.style.transform = "scale(1)";
-                        inputBall.style.transition = "transform 0.3s ease";
-                    }, 1000);
+                zapiszDoHistorii(inputBall.value.trim(), tab);
+                if (n <= 1) {
+                    showError("Brak rozbić!");
                 } else {
                     deleteKulki();
                     createKulki();
                     rozszerzKulki();
                 }
-
             })
             .catch(console.error);
     }
@@ -226,7 +230,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Window - ogólne okno
     inputBall.addEventListener("keydown", function (p) {
-        if (p.key === "Enter") {
+        if (p.key === "Enter" && !isError) {
             apiKulki();
         }
     });
