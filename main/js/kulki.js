@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
     inputBall.setAttribute("autocomplete", "off");
     stage.appendChild(inputBall);
 
-    document.body.append(header, stage,historyStage);
+    document.body.append(header, stage, historyStage);
 
     function createKulki() {
         for (let i = 0; i < n; i++) {
@@ -99,18 +99,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function zapiszDoHistorii(slowo, morfemy) {
         let historia = JSON.parse(localStorage.getItem("morfologiaHistoria")) || [];
-        
+
         historia.unshift({
             slowo: slowo,
             morfemy: morfemy,
             data: new Date().toISOString()
         });
-        
+
         localStorage.setItem("morfologiaHistoria", JSON.stringify(historia));
     }
-    
+
     function wyswietlHistorie(sortowanie = "data-desc") {
-        historyStage.innerHTML = ""; 
+        historyStage.innerHTML = "";
 
         let historia = JSON.parse(localStorage.getItem("morfologiaHistoria")) || [];
 
@@ -120,18 +120,18 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if (sortowanie === "data-desc") {
-            historia.sort((a, b) => new Date(b.data) - new Date(a.data)); 
+            historia.sort((a, b) => new Date(b.data) - new Date(a.data));
         } else if (sortowanie === "data-asc") {
-            historia.sort((a, b) => new Date(a.data) - new Date(b.data)); 
+            historia.sort((a, b) => new Date(a.data) - new Date(b.data));
         } else if (sortowanie === "alfabetycznie") {
-            historia.sort((a, b) => a.slowo.localeCompare(b.slowo)); 
+            historia.sort((a, b) => a.slowo.localeCompare(b.slowo));
         } else if (sortowanie === "morfemy-ilosc") {
-            historia.sort((a, b) => b.morfemy.length - a.morfemy.length); 
+            historia.sort((a, b) => b.morfemy.length - a.morfemy.length);
         }
 
         const panelSortowania = document.createElement("div");
         panelSortowania.style.cssText = "display:flex; gap:10px; justify-content:center; padding:20px; flex-wrap:wrap;";
-        
+
         const opcje = [
             { id: "data-desc", text: "Najnowsze" },
             { id: "data-asc", text: "Najstarsze" },
@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
             przycisk.addEventListener("click", () => wyswietlHistorie(opcja.id));
             panelSortowania.appendChild(przycisk);
         });
-        
+
         historyStage.appendChild(panelSortowania);
 
         const lista = document.createElement("div");
@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
         historia.forEach(wpis => {
             const element = document.createElement("div");
             element.style.cssText = "background: #515363; padding: 15px; border-radius: 8px; color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.2); text-align: left;";
-            
+
             const dataFormat = new Date(wpis.data).toLocaleString("pl-PL");
 
             element.innerHTML = `
@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
             lista.appendChild(element);
         });
 
-        historyStage.appendChild(lista);    
+        historyStage.appendChild(lista);
     }
 
     let isError = false;
@@ -236,14 +236,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     menuLinkHistory.addEventListener("click", function (e) {
-        e.preventDefault(); 
-        stage.style.display = "none"; 
-        historyStage.style.display = "block"; 
-        wyswietlHistorie("data-desc"); 
+        e.preventDefault();
+        stage.style.display = "none";
+        historyStage.style.display = "block";
+        wyswietlHistorie("data-desc");
         menuCheckBox.checked = false; // zamyka menu po kliknięciu
     });
 
-    menuTitle.addEventListener("click", function() {
+    menuTitle.addEventListener("click", function () {
         stage.style.display = "flex";
         historyStage.style.display = "none";
     });
