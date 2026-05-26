@@ -34,13 +34,9 @@ document.addEventListener("DOMContentLoaded", function () {
     menuLinkContact.textContent = "Kontakt";
     const menuLinkSettings = document.createElement("a");
     menuLinkSettings.textContent = "Ustawienia";
-<<<<<<< HEAD
     const menuLinkHistory = document.createElement("a");
     menuLinkHistory.textContent = "Historia";
-    topMenu.append(menuLinkAbout, menuLinkContact, menuLinkSettings,menuLinkHistory);
-=======
-    topMenu.append(menuLinkAbout, menuLinkContact, menuLinkSettings);
->>>>>>> b97a228 (Dodanie obslugi bledow dla n=1 lub n =0)
+    topMenu.append(menuLinkAbout, menuLinkContact, menuLinkSettings, menuLinkHistory);
 
     menuContainer.append(menuCheckBox, menuHamburgerLabel, topMenu);
 
