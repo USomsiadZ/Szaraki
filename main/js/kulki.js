@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const menuLinkSettings = document.createElement("a");
     menuLinkSettings.textContent = "Ustawienia";
     const menuLinkHistory = document.createElement("a");
-    menuLinkSettings.textContent = "Historia";
+    menuLinkHistory.textContent = "Historia";
     topMenu.append(menuLinkAbout, menuLinkContact, menuLinkSettings,menuLinkHistory);
 
     menuContainer.append(menuCheckBox, menuHamburgerLabel, topMenu);
