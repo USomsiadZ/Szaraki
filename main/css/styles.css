@@ -34,13 +34,21 @@ body {
     gap: 15px;
 }
 
-.top-menu a {
+.top-menu a,
+.top-menu button {
     color: #ddd;
     text-decoration: none;
     font-size: 14px;
+    background: none;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    padding: 0;
+    text-align: left;
 }
 
-.top-menu a:hover {
+.top-menu a:hover,
+.top-menu button:hover {
     color: white;
 }
 
@@ -93,14 +101,16 @@ body {
     visibility: visible;
 }
 
-.top-menu a {
+.top-menu a,
+.top-menu button {
     padding: 12px 15px;
     color: #ddd;
     text-decoration: none;
     border-bottom: 1px solid #515363;
 }
 
-.top-menu a:hover {
+.top-menu a:hover,
+.top-menu button:hover {
     background: #515363;
 }
 
@@ -263,7 +273,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: transform 2s ease;
+    transition: transform 1s ease;
 }
 
 .small-ball:hover,
@@ -281,6 +291,63 @@ input.ball {
 
 .history-stage {
     flex: 1;
-    overflow-y: auto; /* Zapewnia scrollowanie historii */
+    overflow-y: auto;
+    /* Zapewnia scrollowanie historii */
     padding-bottom: 40px;
+}
+
+/* Ustawienia */
+.settings-stage {
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 40px;
+}
+
+.settings-panel {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: white;
+}
+
+.settings-panel h2 {
+    text-align: center;
+    margin: 0;
+}
+
+.settings-panel label {
+    font-weight: bold;
+}
+
+.settings-panel select,
+.settings-panel input[type="password"],
+.settings-panel input[type="text"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background: #515363;
+    color: white;
+    font-size: 14px;
+}
+
+.settings-panel button {
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    background: #7e7e7e;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.settings-panel .message {
+    text-align: center;
+    min-height: 20px;
+    font-size: 13px;
+    color: #61dafb;
 }

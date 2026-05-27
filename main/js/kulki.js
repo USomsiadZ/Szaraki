@@ -10,11 +10,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const header = createHeader();
     const stage = createStage();
     const historyStage = createHistoryStage();
+    const settingsStage = createSettingsStage();
 
-    document.body.append(header, stage, historyStage);
+    document.body.append(header, stage, historyStage, settingsStage);
 
     const menuCheckBox = document.getElementById("menu-toggle");
-    const menuLinkHistory = document.querySelector(".top-menu a:last-child");
+    const menuLinkSettings = document.getElementById("menu-settings");
+    const menuLinkHistory = document.getElementById("menu-history");
     const menuTitle = document.querySelector(".title");
     const inputBall = document.querySelector("input.ball");
 
@@ -25,18 +27,31 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    menuLinkHistory.addEventListener("click", function (e) {
-        e.preventDefault();
+    menuLinkHistory.addEventListener("click", function () {
         stage.style.display = "none";
         historyStage.style.display = "block";
+        settingsStage.style.display = "none";
         wyswietlHistorie(historyStage, "data-desc");
         menuCheckBox.checked = false; // zamyka menu po kliknięciu
     });
 
-    menuTitle.addEventListener("click", function () {
+    menuLinkSettings.addEventListener("click", function () {
+        stage.style.display = "none";
+        historyStage.style.display = "none";
+        settingsStage.style.display = "block";
+        wyswietlUstawienia(settingsStage);
+        menuCheckBox.checked = false;
+    });
+
+    function domenuLinkHome() {
         stage.style.display = "flex";
         historyStage.style.display = "none";
-    });
+        settingsStage.style.display = "none";
+        menuCheckBox.checked = false;
+    }
+
+    document.getElementById("menu-home").addEventListener("click", domenuLinkHome);
+    menuTitle.addEventListener("click", domenuLinkHome);
 
     createKulki(stage);
     rozszerzKulki();
