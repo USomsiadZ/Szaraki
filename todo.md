@@ -43,4 +43,10 @@ dostępność (np. kontrast, aria)
 * mobilny layout (kulki przeszkadzają)
 * dokumentacja
 * prezentacja
-* 
+
+
+### WWW to co mówił na początku
+* podstawowa walidacja formularza - requei
+* Ma się odpalać na telefonie lub tez na ultrawide
+* Dokumentacja - Readme - screenshoty
+* Kasper.seweryn@pb.edu.pl
