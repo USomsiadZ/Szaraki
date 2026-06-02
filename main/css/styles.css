@@ -27,6 +27,11 @@ body {
     text-align: center;
 }
 
+.header .title .title-text {
+    display: inline-block;
+    cursor: pointer;
+}
+
 .top-menu {
     position: absolute;
     left: 20px;
@@ -350,4 +355,52 @@ input.ball {
     min-height: 20px;
     font-size: 13px;
     color: #61dafb;
+}
+
+.about-stage {
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 40px;
+}
+
+.about-panel {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    color: white;
+}
+
+.about-panel ul {
+    margin: 0;
+    padding-left: 18px;
+}
+
+.about-panel li {
+    margin: 6px 0;
+}
+
+.authors-list {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 16px;
+}
+
+.author-card {
+    flex: 1;
+    min-width: 0;
+}
+
+.author-role {
+    font-weight: bold;
+}
+
+.author-photo {
+    width: 96px;
+    height: 96px;
+    object-fit: cover;
+    display: block;
+    margin-top: 8px;
 }

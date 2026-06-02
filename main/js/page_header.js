@@ -19,25 +19,29 @@ function createHeader() {
     const topMenu = document.createElement("nav");
     topMenu.className = "top-menu";
 
-    const menuLinkAbout = document.createElement("button");
-    menuLinkAbout.id = "menu-home";
-    menuLinkAbout.textContent = "Strona główna";
-    const menuLinkContact = document.createElement("button");
-    menuLinkContact.id = "menu-contact";
-    menuLinkContact.textContent = "Kontakt";
+    const menuLinkMain = document.createElement("button");
+    menuLinkMain.id = "menu-home";
+    menuLinkMain.textContent = "Strona główna";
     const menuLinkSettings = document.createElement("button");
     menuLinkSettings.id = "menu-settings";
     menuLinkSettings.textContent = "Ustawienia";
     const menuLinkHistory = document.createElement("button");
     menuLinkHistory.id = "menu-history";
     menuLinkHistory.textContent = "Historia";
-    topMenu.append(menuLinkAbout, menuLinkContact, menuLinkHistory, menuLinkSettings);
+    const menuLinkAbout = document.createElement("button");
+    menuLinkAbout.id = "menu-about";
+    menuLinkAbout.textContent = "O nas";
+    topMenu.append(menuLinkMain, menuLinkHistory, menuLinkSettings, menuLinkAbout);
 
     menuContainer.append(menuCheckBox, menuHamburgerLabel, topMenu);
 
     const menuTitle = document.createElement("div");
     menuTitle.className = "title";
-    menuTitle.textContent = "Rozbijacz morfologiczny📖";
+
+    const menuTitleText = document.createElement("span");
+    menuTitleText.className = "title-text";
+    menuTitleText.textContent = "Rozbijacz morfologiczny📖";
+    menuTitle.appendChild(menuTitleText);
 
     header.append(menuContainer, menuTitle);
 

@@ -11,13 +11,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const stage = createStage();
     const historyStage = createHistoryStage();
     const settingsStage = createSettingsStage();
+    const aboutStage = createAboutStage();
 
-    document.body.append(header, stage, historyStage, settingsStage);
+    document.body.append(header, stage, historyStage, settingsStage, aboutStage);
 
     const menuCheckBox = document.getElementById("menu-toggle");
     const menuLinkSettings = document.getElementById("menu-settings");
     const menuLinkHistory = document.getElementById("menu-history");
-    const menuTitle = document.querySelector(".title");
+    const menuLinkAbout = document.getElementById("menu-about");
+    const menuTitle = document.querySelector(".title .title-text");
     const inputBall = document.querySelector("input.ball");
 
     // Window - ogólne okno
@@ -31,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
         stage.style.display = "none";
         historyStage.style.display = "block";
         settingsStage.style.display = "none";
+        aboutStage.style.display = "none";
         wyswietlHistorie(historyStage, "data-desc");
         menuCheckBox.checked = false; // zamyka menu po kliknięciu
     });
@@ -39,7 +42,17 @@ document.addEventListener("DOMContentLoaded", function () {
         stage.style.display = "none";
         historyStage.style.display = "none";
         settingsStage.style.display = "block";
+        aboutStage.style.display = "none";
         wyswietlUstawienia(settingsStage);
+        menuCheckBox.checked = false;
+    });
+
+    menuLinkAbout.addEventListener("click", function () {
+        stage.style.display = "none";
+        historyStage.style.display = "none";
+        settingsStage.style.display = "none";
+        aboutStage.style.display = "block";
+        wyswietlONas(aboutStage);
         menuCheckBox.checked = false;
     });
 
@@ -47,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
         stage.style.display = "flex";
         historyStage.style.display = "none";
         settingsStage.style.display = "none";
+        aboutStage.style.display = "none";
         menuCheckBox.checked = false;
     }
 
