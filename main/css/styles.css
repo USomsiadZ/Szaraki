@@ -297,11 +297,9 @@ input.ball {
 .history-stage {
     flex: 1;
     overflow-y: auto;
-    /* Zapewnia scrollowanie historii */
     padding-bottom: 40px;
 }
 
-/* Ustawienia */
 .settings-stage {
     flex: 1;
     overflow-y: auto;
@@ -357,50 +355,73 @@ input.ball {
     color: #61dafb;
 }
 
-.about-stage {
-    flex: 1;
-    overflow-y: auto;
-    padding-bottom: 40px;
+/* css do historii */
+.history-stage {
+    display: none;
 }
 
-.about-panel {
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+.history-empty-msg {
     color: white;
+    text-align: center;
+    padding: 20px;
 }
 
-.about-panel ul {
-    margin: 0;
-    padding-left: 18px;
-}
-
-.about-panel li {
-    margin: 6px 0;
-}
-
-.authors-list {
+.history-sort-panel {
     display: flex;
-    flex-wrap: nowrap;
-    gap: 16px;
+    gap: 10px;
+    justify-content: center;
+    padding: 20px;
+    flex-wrap: wrap;
 }
 
-.author-card {
-    flex: 1;
-    min-width: 0;
+.history-sort-btn {
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    background: #515363;
+    color: white;
+    font-weight: normal;
+    transition: background 0.2s ease, font-weight 0.2s ease; 
 }
 
-.author-role {
+.history-sort-btn.active {
+    background: #7e7e7e;
     font-weight: bold;
 }
 
-.author-photo {
-    width: 96px;
-    height: 96px;
-    object-fit: cover;
-    display: block;
-    margin-top: 8px;
+.history-list {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.history-item {
+    background: #515363;
+    padding: 15px;
+    border-radius: 8px;
+    color: white;
+    box-shadow: 0 2px 5px #00000033;
+    text-align: left;
+}
+
+.history-item-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #3a3c4a;
+    padding-bottom: 5px;
+}
+
+.history-item-date {
+    font-size: 12px;
+    color: #ccc;
+}
+
+.history-item-morfemy span {
+    color: #ffffff;
+    font-weight: bold;
 }
