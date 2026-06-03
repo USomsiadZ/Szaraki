@@ -69,8 +69,10 @@ function showError(inputBall, msg, duration = 1000) {
 function apiKulki(stage, inputBall) {
     isUsed = true;
     // Wykład nr 5
+    const ustawienia = odczytajUstawienia();
     const requestBody = {
-        model: "gpt-5.4-mini",
+        // model: "gpt-5.4-mini",
+        model: ustawienia.model,
         messages: [
             {
                 role: "user",
@@ -84,7 +86,8 @@ function apiKulki(stage, inputBall) {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer " + api,
+            // Authorization: "Bearer " + api,
+            Authorization: "Bearer " + ustawienia.klucz,
         },
         // Openai oczekuje JSON
         body: JSON.stringify(requestBody),
