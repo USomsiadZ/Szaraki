@@ -50,3 +50,6 @@ dostępność (np. kontrast, aria)
 * Ma się odpalać na telefonie lub tez na ultrawide
 * Dokumentacja - Readme - screenshoty
 * Kasper.seweryn@pb.edu.pl
+
+
+
