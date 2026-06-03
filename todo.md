@@ -49,7 +49,7 @@ dostępność (np. kontrast, aria)
 * podstawowa walidacja formularza - requei
 * Ma się odpalać na telefonie lub tez na ultrawide
 * Dokumentacja - Readme - screenshoty
-* Kasper.seweryn@pb.edu.pl
+
 
 
 
