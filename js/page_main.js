@@ -114,5 +114,6 @@ function apiKulki(stage, inputBall) {
         .catch((err) => {
             isUsed = false;
             console.error(err);
+            showError(inputBall, "Błąd API", 2000);
         });
 }
