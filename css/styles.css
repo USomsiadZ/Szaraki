@@ -448,7 +448,7 @@ input.ball {
     background: #515363;
     color: white;
     font-weight: normal;
-    transition: background 0.2s ease, font-weight 0.2s ease; 
+    transition: background 0.2s ease, font-weight 0.2s ease;
 }
 
 .history-sort-btn.active {
@@ -490,4 +490,28 @@ input.ball {
 .history-item-morfemy span {
     color: #ffffff;
     font-weight: bold;
+}
+
+/* Responsywność kulek: na telefonie zmniejszamy kulki, żeby się mieściły */
+@media (max-width: 600px) {
+    .ball {
+        width: 110px;
+        height: 110px;
+    }
+
+    .small-ball {
+        width: 80px;
+        height: 80px;
+        font-size: 14px;
+    }
+
+    input.ball {
+        font-size: 16px;
+    }
+}
+
+/* Brak poziomego przewijania na małych ekranach */
+html,
+body {
+    overflow-x: hidden;
 }

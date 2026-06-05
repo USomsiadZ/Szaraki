@@ -37,8 +37,17 @@ function deleteKulki(stage) {
     stage.querySelectorAll(".small-ball").forEach((el) => el.remove());
 }
 
+
+function policzPromien(stage) {
+    const dostepne = Math.min(stage.clientWidth, stage.clientHeight) / 2 - 50;
+    // aby nie nachodzily na siebie
+    return Math.max(90, Math.min(dostepne, 260));
+}
+
 function rozszerzKulki() {
     setTimeout(() => {
+        const stage = document.querySelector(".balls-stage");
+        const promien = policzPromien(stage);
         for (let i = 0; i < n; i++) {
             const ball = document.getElementById(`ball${i + 1}`);
             const angle = (i / n) * Math.PI * 2;
@@ -47,7 +56,9 @@ function rozszerzKulki() {
             // 200 - dalekość
             // x = r*cos(angle)
             // y = r*sin(angle)
-            ball.style.transform = `translate(${Math.cos(angle) * 200}px, ${Math.sin(angle) * 200}px)`;
+            // cos - x, sin - y, promien - dalekość
+            // x = r*cos(angle), y = r*sin(angle)
+            ball.style.transform = `translate(${Math.cos(angle) * promien}px, ${Math.sin(angle) * promien}px)`;
         }
     }, 300);
 }

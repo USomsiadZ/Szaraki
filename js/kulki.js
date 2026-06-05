@@ -69,4 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     createKulki(stage);
     rozszerzKulki();
+
+    // Responsywność: przy zmianie rozmiaru okna przelicz promień kulek
+    window.addEventListener("resize", rozszerzKulki);
 });
