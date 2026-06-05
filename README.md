@@ -34,7 +34,7 @@ Projekt został zrealizowany w ramach przedmiotu **Wprowadzenie do aplikacji WWW
 * **Panel Ustawień:** Elastyczna konfiguracja wyboru dostawcy API (OpenAI, Gemini, Claude, OpenRouter), klucza autoryzacyjnego oraz modelu.
 ![alt text](image-3.png)
 * **Responsywny Design:** Pełna adaptacja interfejsu do ekranów mobilnych, standardowych oraz monitorów Ultra-Wide (media queries).
-![alt text](image.png)
+![alt text](giff.gif)
 
 ---
 
