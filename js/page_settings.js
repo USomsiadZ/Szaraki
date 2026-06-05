@@ -1,8 +1,9 @@
 // Lista dostawców i modeli
 const dostawcy = {
     openai: { nazwa: "OpenAI", modele: ["gpt-5.4-mini", "gpt-5.5"] },
-    //claude: { nazwa: "Claude (Anthropic)", modele: ["claude-haiku-4", "claude-sonnet-4", "claude-opus-4"] },
-    //gemini: { nazwa: "Gemini (Google)", modele: ["gemini-2.5-flash", "gemini-3-flash", "gemini-3-pro"] }
+    claude: { nazwa: "Claude (Anthropic)", modele: ["claude-haiku-4", "claude-sonnet-4", "claude-opus-4"] },
+    gemini: { nazwa: "Gemini (Google)", modele: ["gemini-2.5-flash", "gemini-3-flash", "gemini-3-pro"] },
+    openrouter: { nazwa: "OpenRouter", modele: ["openai/gpt-4o-mini", "anthropic/claude-sonnet-4.5", "google/gemini-2.5-flash"] }
 };
 // Pusty stage
 function createSettingsStage() {
