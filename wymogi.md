@@ -2,7 +2,7 @@
 
 ## MVP (wymagania minimalne)
 - Podstawowa walidacja formularza.
-- Responsywny layout (mobile-first, poprawne dzialanie na telefonie i ultrawide).
+- Responsywny layout (mobile-first, poprawne dzialanie na telefonie i ultrawide).✅
 - Poprawny kod bez bledow krytycznych (czytelnosc i struktura).
 - Podstawowa dokumentacja i przygotowanie prezentacji (obrona).
 
@@ -15,7 +15,7 @@
 
 #todo
 - Dodac walidacje formularza (wymagane pola, komunikaty bledow, blokada wysylki niepoprawnych danych).
-- Poprawic layout mobilny (usunac problem z "kulkami"), sprawdzic breakpointy mobile/tablet/desktop/ultrawide.
+- Poprawic layout mobilny (usunac problem z "kulkami"), sprawdzic breakpointy mobile/tablet/desktop/ultrawide. ✅
 - Przejrzec kod i usunac bledy krytyczne oraz uporzadkowac strukture plikow.
 - Uzupelnic `README.md`: opis projektu, uruchomienie, funkcje, screenshoty.
 - Przygotowac plan prezentacji: zakres demo, podzial rol, najwazniejsze funkcjonalnosci.
