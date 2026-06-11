@@ -1,19 +1,16 @@
-/*   https://www.w3schools.com/js/js_events_load.asp   */
-/*   https://www.w3schools.com/jsref/met_win_settimeout.asp   */
-// Najpierw dodanie do stage potem do body - dla wydajności
-
+// Czekamy aż dokument się załaduje, bo może się okazać że nie ma jeszcze body.
 document.addEventListener("DOMContentLoaded", function () {
     //const stage = document.querySelector(".balls-stage");
     //const inputBall = document.querySelector("input.ball");
     // zmienna o nazwie api zawiera klucz do openai
 
     const header = createHeader();
-    const stage = createStage();
+    const mainstage = createMainStage();
     const historyStage = createHistoryStage();
     const settingsStage = createSettingsStage();
     const aboutStage = createAboutStage();
-
-    document.body.append(header, stage, historyStage, settingsStage, aboutStage);
+    // Najpierw dodajemy elementy do stage potem dopiero pokazujemy dla wydajności
+    document.body.append(header, mainstage, historyStage, settingsStage, aboutStage);
 
     const menuCheckBox = document.getElementById("menu-toggle");
     const menuLinkSettings = document.getElementById("menu-settings");
@@ -22,15 +19,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const menuTitle = document.querySelector(".title .title-text");
     const inputBall = document.querySelector("input.ball");
 
-    // Window - ogólne okno
     inputBall.addEventListener("keydown", function (p) {
         if (p.key === "Enter" && !isError && !isUsed) {
-            apiKulki(stage, inputBall);
+            apiKulki(mainstage, inputBall);
         }
     });
-
+    // Historia
     menuLinkHistory.addEventListener("click", function () {
-        stage.style.display = "none";
+        mainstage.style.display = "none";
         historyStage.style.display = "block";
         settingsStage.style.display = "none";
         aboutStage.style.display = "none";
@@ -38,8 +34,9 @@ document.addEventListener("DOMContentLoaded", function () {
         menuCheckBox.checked = false; // zamyka menu po kliknięciu
     });
 
+    // Ustawienia
     menuLinkSettings.addEventListener("click", function () {
-        stage.style.display = "none";
+        mainstage.style.display = "none";
         historyStage.style.display = "none";
         settingsStage.style.display = "block";
         aboutStage.style.display = "none";
@@ -47,8 +44,9 @@ document.addEventListener("DOMContentLoaded", function () {
         menuCheckBox.checked = false;
     });
 
+    // O nas
     menuLinkAbout.addEventListener("click", function () {
-        stage.style.display = "none";
+        mainstage.style.display = "none";
         historyStage.style.display = "none";
         settingsStage.style.display = "none";
         aboutStage.style.display = "block";
@@ -56,18 +54,18 @@ document.addEventListener("DOMContentLoaded", function () {
         menuCheckBox.checked = false;
     });
 
-    function domenuLinkHome() {
-        stage.style.display = "flex";
+    // Strona główna
+    function showMainPage() {
+        mainstage.style.display = "flex";
         historyStage.style.display = "none";
         settingsStage.style.display = "none";
         aboutStage.style.display = "none";
         menuCheckBox.checked = false;
     }
+    document.getElementById("menu-home").addEventListener("click", showMainPage);
+    menuTitle.addEventListener("click", showMainPage);
 
-    document.getElementById("menu-home").addEventListener("click", domenuLinkHome);
-    menuTitle.addEventListener("click", domenuLinkHome);
-
-    createKulki(stage);
+    createKulki(mainstage);
     rozszerzKulki();
 
     // Responsywność: przy zmianie rozmiaru okna przelicz promień kulek

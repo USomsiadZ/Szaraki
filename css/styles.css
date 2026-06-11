@@ -93,9 +93,9 @@ body {
     background: #3a3c4a;
     display: flex;
     flex-direction: column;
-    width: 150px;
+    width: 160px;
     border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.15);
     opacity: 0;
     visibility: hidden;
     transition: 0.3s;
@@ -112,6 +112,12 @@ body {
     color: #ddd;
     text-decoration: none;
     border-bottom: 1px solid #515363;
+}
+
+/* Usunięcie nie estetycznej kresji pod wyborami */
+.top-menu a:last-child,
+.top-menu button:last-child {
+    border-bottom: none;
 }
 
 .top-menu a:hover,
@@ -530,8 +536,8 @@ body {
     flex-direction: column;
     gap: 1rem;
     width: 100%;
-    max-width: 480px;      
-    margin: 0 auto;   
+    max-width: 480px;
+    margin: 0 auto;
 }
 
 .contact-form label {
@@ -554,7 +560,7 @@ body {
 }
 
 .form-btn {
-    align-self: center;    
+    align-self: center;
     padding: 10px 30px;
     background: #4a90d9;
     color: white;
@@ -569,22 +575,22 @@ body {
 }
 
 .formularzKomunikat {
-    visibility: hidden; 
+    visibility: hidden;
     opacity: 0;
-    background-color: #d1e7dd; 
-    color: #0f5132; 
-    border: 1px solid #badbcc; 
-    border-radius: 6px; 
-    padding: 1rem; 
-    margin-top: 1rem; 
-    text-align: center; 
-    font-weight: bold; 
-    transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s; 
+    background-color: #d1e7dd;
+    color: #0f5132;
+    border: 1px solid #badbcc;
+    border-radius: 6px;
+    padding: 1rem;
+    margin-top: 1rem;
+    text-align: center;
+    font-weight: bold;
+    transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s;
     transform: translateY(-10px);
 }
 
 .formularzKomunikat.show {
     visibility: visible;
     opacity: 1;
-    transform: translateY(0); 
+    transform: translateY(0);
 }

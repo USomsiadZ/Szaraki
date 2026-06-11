@@ -3,7 +3,7 @@ let n = tab.length;
 let isError = false;
 let isUsed = false;
 
-function createStage() {
+function createMainStage() {
     const stage = document.createElement("div");
     const inputBall = document.createElement("input");
 
