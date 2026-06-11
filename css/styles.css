@@ -31,6 +31,14 @@ body {
     display: inline-block;
     cursor: pointer;
     user-select: none;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+    transition: text-shadow 0.3s ease;
+}
+
+.header .title .title-text:hover,
+.hamburger-icon:hover {
+    text-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.5);
 }
 
 .menu-container {
@@ -48,6 +56,8 @@ body {
     cursor: pointer;
     color: #ddd;
     user-select: none;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+    transition: text-shadow 0.3s ease;
 }
 
 .top-menu {
@@ -70,11 +80,9 @@ body {
     visibility: visible;
 }
 
-.top-menu a,
 .top-menu button {
     padding: 12px 15px;
     color: #ddd;
-    text-decoration: none;
     font-size: 14px;
     background: none;
     border: none;
@@ -84,15 +92,14 @@ body {
     text-align: left;
 }
 
-/* Usunięcie nie estetycznej kresji pod wyborami */
-.top-menu a:last-child,
+/* Usunięcie nie estetycznej kreski pod wyborami */
 .top-menu button:last-child {
     border-bottom: none;
 }
 
-.top-menu a:hover,
 .top-menu button:hover {
     background: #515363;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
 }
 
 @media (min-width: 468px) {
@@ -126,12 +133,10 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 5;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.ball:hover {
-    background-color: #7e7e7e;
-    cursor: pointer;
+    box-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.45),
+        inset 0 2px 6px rgba(255, 255, 255, 0.25);
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .small-ball {
@@ -143,7 +148,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: transform 1s ease;
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.4),
+        inset 0 1px 4px rgba(255, 255, 255, 0.2);
+    transition: transform 1s ease, background-color 0.3s ease, box-shadow 0.3s ease;
     user-select: none;
 }
 
@@ -151,6 +159,9 @@ body {
 .ball:hover {
     background-color: #7e7e7e;
     cursor: pointer;
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.5),
+        inset 0 2px 6px rgba(255, 255, 255, 0.15);
 }
 
 input.ball {
@@ -193,8 +204,7 @@ input.ball {
 }
 
 .settings-panel select,
-.settings-panel input[type="password"],
-.settings-panel input[type="text"] {
+.settings-panel input[type="password"] {
     padding: 10px;
     border-radius: 5px;
     border: none;
@@ -273,7 +283,6 @@ input.ball {
     width: 96px;
     height: 96px;
     object-fit: cover;
-    border-radius: 0;
     margin-top: 8px;
     border: 2px solid #515363;
 }
