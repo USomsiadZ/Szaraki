@@ -248,6 +248,7 @@ input.ball {
     text-align: center;
 }
 
+
 .authors-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
