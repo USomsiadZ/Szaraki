@@ -30,43 +30,7 @@ body {
 .header .title .title-text {
     display: inline-block;
     cursor: pointer;
-}
-
-.top-menu {
-    position: absolute;
-    left: 20px;
-    display: flex;
-    gap: 15px;
-}
-
-.top-menu a,
-.top-menu button {
-    color: #ddd;
-    text-decoration: none;
-    font-size: 14px;
-    background: none;
-    border: none;
-    font: inherit;
-    cursor: pointer;
-    padding: 0;
-    text-align: left;
-}
-
-.top-menu a:hover,
-.top-menu button:hover {
-    color: white;
-}
-
-.main {
-    display: flex;
-    justify-content: center;
-    background: #081420;
-}
-
-.content-wrapper {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+    user-select: none;
 }
 
 .menu-container {
@@ -111,7 +75,13 @@ body {
     padding: 12px 15px;
     color: #ddd;
     text-decoration: none;
+    font-size: 14px;
+    background: none;
+    border: none;
     border-bottom: 1px solid #515363;
+    font: inherit;
+    cursor: pointer;
+    text-align: left;
 }
 
 /* Usunięcie nie estetycznej kresji pod wyborami */
@@ -125,128 +95,17 @@ body {
     background: #515363;
 }
 
-.left,
-.right {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 20px;
-}
-
-.left {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.search-box {
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-}
-
-.results {
-    margin-top: 20px;
-    width: 100%;
-}
-
-.result-item {
-    background: white;
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.right {
-    background: #081420;
-    border-top: 2px solid #515363;
-}
-
-.details {
-    line-height: 1.6;
-    color: #ddd;
-}
-
-/* wersja normal */
-@media (min-width: 992px) {
-    .content-wrapper {
-        flex-direction: row;
-        height: calc(100vh - 80px);
-    }
-
-    .left,
-    .right {
-        width: 50%;
-        height: 100%;
-    }
-
-    .right {
-        border-top: none;
-        border-left: 2px solid #515363;
-    }
-}
-
-/* wersja mobilna */
 @media (min-width: 468px) {
-    .main {
-        flex-direction: column;
-        height: auto;
-    }
-
     .header .title {
         font-size: 48px;
     }
-
-    .left,
-    .right {
-        width: 50%;
-    }
-
-    .right {
-        border-top: none;
-        border-left: 2px solid #515363;
-    }
 }
 
-/* wersja wide */
 @media (min-width: 1600px) {
-    .content-wrapper {
-        max-width: 1600px;
-        margin: 40px auto;
-        border-radius: 25px;
-        height: 75vh;
-        border: 1px solid #515363;
-    }
-
-    /* Powiększamy wszystko na dużym ekranie */
     .header .title {
         font-size: 64px;
     }
-
-    .search-box {
-        font-size: 24px;
-        padding: 20px;
-    }
-
-    .details h2 {
-        font-size: 48px;
-    }
-
-    .details p {
-        font-size: 24px;
-        line-height: 1.8;
-    }
-
-    .result-item {
-        font-size: 22px;
-        padding: 20px;
-    }
 }
-
-
-
 
 /* Hubert */
 .balls-stage {
@@ -285,6 +144,7 @@ body {
     justify-content: center;
     align-items: center;
     transition: transform 1s ease;
+    user-select: none;
 }
 
 .small-ball:hover,
@@ -302,6 +162,7 @@ input.ball {
 
 .history-stage {
     flex: 1;
+    display: none;
     overflow-y: auto;
     padding-bottom: 40px;
 }
@@ -424,10 +285,6 @@ input.ball {
 }
 
 /* css do historii */
-.history-stage {
-    display: none;
-}
-
 .history-empty-msg {
     color: white;
     text-align: center;
