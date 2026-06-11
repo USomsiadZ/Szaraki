@@ -15,6 +15,8 @@ https://github.com/USomsiadZ/Szaraki
 # Dokumentacja
 # Rozbijacz Morfologiczny
 
+**Aplikacja online:** https://usomsiadz.github.io/szaraki/
+
 Aplikacja webowa służąca do nauki języków oraz wizualnej analizy słowotwórczej. Projekt pozwala użytkownikowi wpisać dowolne słowo, które następnie za pomocą sztucznej inteligencji (LLM) jest rozbijane na poszczególne morfemy (prefiksy, rdzeń, sufiksy) i prezentowane w formie dynamicznych, rozsuwających się kulek na ekranie.
 
 Projekt został zrealizowany w ramach przedmiotu **Wprowadzenie do aplikacji WWW**.
