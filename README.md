@@ -45,17 +45,21 @@ Projekt został zrealizowany w ramach przedmiotu **Wprowadzenie do aplikacji WWW
 Aplikacja została zbudowana w architekturze modułowej przy użyciu czystego JavaScriptu, gdzie widoki oraz komponenty są generowane dynamicznie za pomocą manipulacji drzewem DOM.
 
 ```text
-├── index.html            # Główny punkt wejścia aplikacji
+Szaraki/
+├── index.html              # Punkt wejścia, ładowanie skryptów i stylów
 ├── css/
-│   └── styles.css        # Kompletne style CSS
+│   └── styles.css          # Style całej aplikacji
+├── img/                    # Grafiki interfejsu (favicon, autorzy, ikony)
+├── dokumentacja_img/       # Screenshoty do README
 └── js/
-    ├── kulki.js          # Główny kontroler aplikacji, zarządzanie zdarzeniami i cyklem życia
-    ├── page_header.js    # Moduł dynamicznego nagłówka oraz menu hamburgerowego
-    ├── page_main.js      # Kontroler głównej sceny (generowanie kulek, animacje, zapytania API)
-    ├── page_history.js   # Zarządzanie historią wyników i zapisem w localStorage
-    ├── page_settings.js  # Integracja z formularzem konfiguracji API
-    ├── page_about.js     # Widok sekcji "O nas" z informacjami o zespole
-    ├── api_openai.js     # Integracja z bramką API OpenAI
-    ├── api_gemini.js     # Integracja z bramką API Google Gemini
-    ├── api_claude.js     # Integracja z bramką API Anthropic Claude
-    └── api_openrouter.js # Integracja z uniwersalną bramką OpenRouter
+    ├── main.js             # Start aplikacji, routing między widokami
+    ├── createStage.js      # Tworzenie kontenerów scen (main, historia, ustawienia, o nas)
+    ├── page_header.js      # Nagłówek i menu hamburger
+    ├── page_main.js        # Scena główna: kulki, animacje, zapytania do API
+    ├── page_history.js     # Historia rozbić: sortowanie, paginacja, usuwanie, statystyki
+    ├── page_settings.js    # Ustawienia API (dostawca, model, klucz)
+    ├── page_about.js       # Widok „O nas” i formularz kontaktowy
+    ├── api_openai.js       # Integracja z API OpenAI
+    ├── api_gemini.js       # Integracja z API Google Gemini
+    ├── api_claude.js       # Integracja z API Anthropic Claude
+    └── api_openrouter.js   # Integracja z API OpenRouter
