@@ -15,7 +15,6 @@ function createHeader() {
     menuHamburgerLabel.className = "hamburger-icon";
     menuHamburgerLabel.textContent = "☰";
 
-    // Tutaj doda się przejścia
     const topMenu = document.createElement("nav");
     topMenu.className = "top-menu";
 

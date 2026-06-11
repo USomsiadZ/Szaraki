@@ -28,15 +28,8 @@ function createKulki(stage) {
 }
 
 function deleteKulki(stage) {
-    /*
-    const smallBalls = document.getElementsByClassName("small-ball");
-    for (let i = 0; i < smallBalls.length; i++) {
-        smallBalls[i].remove();
-    }
-    */
     stage.querySelectorAll(".small-ball").forEach((el) => el.remove());
 }
-
 
 function policzPromien(stage) {
     const dostepne = Math.min(stage.clientWidth, stage.clientHeight) / 2 - 50;

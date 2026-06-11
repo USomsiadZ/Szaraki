@@ -1,9 +1,5 @@
 // Czekamy aż dokument się załaduje, bo może się okazać że nie ma jeszcze body.
 document.addEventListener("DOMContentLoaded", function () {
-    //const stage = document.querySelector(".balls-stage");
-    //const inputBall = document.querySelector("input.ball");
-    // zmienna o nazwie api zawiera klucz do openai
-
     const header = createHeader();
     const mainstage = createMainStage();
     const historyStage = createHistoryStage();

@@ -215,13 +215,6 @@ input.ball {
     margin-top: 10px;
 }
 
-.settings-panel .message {
-    text-align: center;
-    min-height: 20px;
-    font-size: 13px;
-    color: #61dafb;
-}
-
 /* strona "O nas" */
 .about-stage {
     flex: 1;
