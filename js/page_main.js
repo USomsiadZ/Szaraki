@@ -2,6 +2,8 @@ let tab = ["un", "happy", "ness"];
 let n = tab.length;
 let isError = false;
 let isUsed = false;
+let isLoading = false;
+let loadingSavedValue = "";
 
 function createKulki(stage) {
     for (let i = 0; i < n; i++) {
@@ -56,12 +58,31 @@ function showError(inputBall, msg, duration = 1000) {
     }, duration);
 }
 
+function showLoading(inputBall) {
+    isLoading = true;
+    loadingSavedValue = inputBall.value;
+    inputBall.value = "Ładowanie...";
+    inputBall.style.backgroundColor = "#5a7ea8";
+}
+
+function hideLoading(inputBall) {
+    inputBall.style.backgroundColor = "";
+    inputBall.value = loadingSavedValue;
+    isLoading = false;
+}
+
 function apiKulki(stage, inputBall) {
+    if (isUsed || isError || isLoading) return;
+
+    const slowo = inputBall.value.trim();
+    if (!slowo) return;
+
     isUsed = true;
+    showLoading(inputBall);
     // Wykład nr 5
     const ustawienia = odczytajUstawienia();
     const prompt =
-        `Rozłóż morfematycznie słowo "${inputBall.value.trim()}" na kolejne morfemy w kolejności od lewej do prawej (prefiksy, rdzeń, sufiksy). Liczba elementów ma wynikać z analizy — nie narzucaj stałej długości listy. Odpowiedz wyłącznie jednym obiektem JSON, bez markdownu, w formacie {"parts":["fragment", "..."]} gdzie "parts" to tablica o zmiennej długości.`;
+        `Rozłóż morfematycznie słowo "${slowo}" na kolejne morfemy w kolejności od lewej do prawej (prefiksy, rdzeń, sufiksy). Liczba elementów ma wynikać z analizy — nie narzucaj stałej długości listy. Odpowiedz wyłącznie jednym obiektem JSON, bez markdownu, w formacie {"parts":["fragment", "..."]} gdzie "parts" to tablica o zmiennej długości.`;
 
     let zadanie;
     if (ustawienia.dostawca === "openai") {
@@ -76,6 +97,7 @@ function apiKulki(stage, inputBall) {
 
     zadanie
         .then((content) => {
+            hideLoading(inputBall);
             tab = JSON.parse(content).parts;
             n = tab.length;
 
@@ -83,7 +105,7 @@ function apiKulki(stage, inputBall) {
                 deleteKulki(stage);
                 showError(inputBall, "Brak rozbić!");
             } else {
-                zapiszDoHistorii(inputBall.value.trim(), tab)
+                zapiszDoHistorii(slowo, tab)
                 deleteKulki(stage);
                 createKulki(stage);
                 rozszerzKulki();
@@ -91,6 +113,7 @@ function apiKulki(stage, inputBall) {
             isUsed = false;
         })
         .catch((err) => {
+            hideLoading(inputBall);
             isUsed = false;
             console.error(err);
             showError(inputBall, "Błąd API", 2000);

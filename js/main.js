@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const inputBall = document.querySelector("input.ball");
 
     inputBall.addEventListener("keydown", function (p) {
-        if (p.key === "Enter" && !isError && !isUsed) {
+        if (p.key === "Enter" && !isError && !isUsed && !isLoading) {
             apiKulki(mainstage, inputBall);
         }
     });
