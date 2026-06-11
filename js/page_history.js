@@ -1,3 +1,5 @@
+const paginacja_max = 5;
+
 function zapiszDoHistorii(slowo, morfemy) {
     let historia = JSON.parse(localStorage.getItem("morfologiaHistoria")) || [];
 
@@ -10,7 +12,13 @@ function zapiszDoHistorii(slowo, morfemy) {
     localStorage.setItem("morfologiaHistoria", JSON.stringify(historia));
 }
 
-function wyswietlHistorie(historyStage, sortowanie = "data-desc") {
+function usunZHistorii(data) {
+    let historia = JSON.parse(localStorage.getItem("morfologiaHistoria")) || [];
+    historia = historia.filter(wpis => wpis.data !== data);
+    localStorage.setItem("morfologiaHistoria", JSON.stringify(historia));
+}
+
+function wyswietlHistorie(historyStage, sortowanie = "data-desc", ile = paginacja_max) {
     historyStage.innerHTML = "";
 
     let historia = JSON.parse(localStorage.getItem("morfologiaHistoria")) || [];
@@ -56,7 +64,7 @@ function wyswietlHistorie(historyStage, sortowanie = "data-desc") {
 
     const lista = document.createElement("div");
     lista.className = "history-list";
-    historia.forEach(wpis => {
+    historia.slice(0, ile).forEach(wpis => {
         const element = document.createElement("div");
         element.className = "history-item";
         const dataFormat = new Date(wpis.data).toLocaleString("pl-PL");
@@ -66,10 +74,32 @@ function wyswietlHistorie(historyStage, sortowanie = "data-desc") {
                     <strong>${wpis.slowo}</strong>
                     <span class="history-item-date">${dataFormat}</span>
                 </div>
-                <div class="history-item-morfemy">Morfemy: <span>${wpis.morfemy.join(" ⁕ ")}</span></div>
+                <div class="history-item-row">
+                    <div class="history-item-morfemy">Morfemy: <span>${wpis.morfemy.join(" ⁕ ")}</span></div>
+                </div>
             `;
+
+        const przyciskUsun = document.createElement("button");
+        przyciskUsun.textContent = "Usuń";
+        przyciskUsun.className = "history-delete-btn";
+        przyciskUsun.addEventListener("click", function () {
+            usunZHistorii(wpis.data);
+            wyswietlHistorie(historyStage, sortowanie, ile);
+        });
+        element.querySelector(".history-item-row").appendChild(przyciskUsun);
+
         lista.appendChild(element);
     });
 
     historyStage.appendChild(lista);
+
+    if (ile < historia.length) {
+        const przyciskWiecej = document.createElement("button");
+        przyciskWiecej.textContent = "Załaduj więcej";
+        przyciskWiecej.className = "history-load-more-btn";
+        przyciskWiecej.addEventListener("click", function () {
+            wyswietlHistorie(historyStage, sortowanie, ile + paginacja_max);
+        });
+        historyStage.appendChild(przyciskWiecej);
+    }
 }

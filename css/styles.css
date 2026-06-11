@@ -318,6 +318,18 @@ input.ball {
     font-weight: bold;
 }
 
+.history-load-more-btn {
+    display: block;
+    margin: 0 auto 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    background: #515363;
+    color: white;
+    font-size: 14px;
+}
+
 .history-list {
     max-width: 600px;
     margin: 0 auto;
@@ -349,9 +361,26 @@ input.ball {
     color: #ccc;
 }
 
+.history-item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
 .history-item-morfemy span {
-    color: #ffffff;
     font-weight: bold;
+}
+
+.history-delete-btn {
+    flex-shrink: 0;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    background: #7e4a4a;
+    color: white;
+    font-size: 12px;
 }
 
 /* Responsywność kulek: na telefonie zmniejszamy kulki, żeby się mieściły */

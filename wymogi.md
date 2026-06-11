@@ -3,15 +3,15 @@
 ## MVP (wymagania minimalne)
 - Podstawowa walidacja formularza.
 - Responsywny layout (mobile-first, poprawne dzialanie na telefonie i ultrawide).✅
-- Poprawny kod bez bledow krytycznych (czytelnosc i struktura).
-- Podstawowa dokumentacja i przygotowanie prezentacji (obrona).
+- Poprawny kod bez bledow krytycznych (czytelnosc i struktura). ✅
+- Podstawowa dokumentacja i przygotowanie prezentacji (obrona). ✅
 
 ## Rozszerzenia funkcjonalnosci (do poprawy/uzupelnienia)
 - Filtrowanie wg kilku parametrow.
-- Paginacja lub "zaladuj wiecej".
-- Edycja danych lokalnych.
+- Paginacja lub "zaladuj wiecej".✅
+- Edycja danych lokalnych.✅
 - Przetwarzanie danych (np. agregacje, statystyki).
-- Obsluga wielu zapytan do API.
+- Obsluga wielu zapytan do API. ✅
 
 #todo
 - Dodac walidacje formularza (wymagane pola, komunikaty bledow, blokada wysylki niepoprawnych danych).
