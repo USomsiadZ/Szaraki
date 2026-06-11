@@ -1,10 +1,3 @@
-function createAboutStage() {
-	const aboutStage = document.createElement("div");
-	aboutStage.className = "about-stage";
-	aboutStage.style.display = "none";
-	return aboutStage;
-}
-
 function wyswietlONas(aboutStage) {
 	aboutStage.innerHTML = "";
 
@@ -128,8 +121,8 @@ function wyswietlONas(aboutStage) {
 	przycisk.className = "form-btn";
 
 	const komunikat = document.createElement("div");
-    komunikat.className = "formularzKomunikat"; 
-    komunikat.textContent = "Wiadomość została wysłana!";
+	komunikat.className = "formularzKomunikat";
+	komunikat.textContent = "Wiadomość została wysłana!";
 
 	formularz.addEventListener("submit", (e) => {
 		e.preventDefault();
@@ -148,9 +141,9 @@ function wyswietlONas(aboutStage) {
 
 		komunikat.classList.add("show");
 
-        setTimeout(() => {
+		setTimeout(() => {
 			komunikat.classList.remove("show");
-        }, 3000);
+		}, 3000);
 
 	});
 

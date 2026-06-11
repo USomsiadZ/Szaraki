@@ -3,20 +3,6 @@ let n = tab.length;
 let isError = false;
 let isUsed = false;
 
-function createMainStage() {
-    const stage = document.createElement("div");
-    const inputBall = document.createElement("input");
-
-    stage.className = "balls-stage";
-    inputBall.type = "text";
-    inputBall.className = "ball";
-    inputBall.value = "unhappiness";
-    inputBall.setAttribute("autocomplete", "off");
-    stage.appendChild(inputBall);
-
-    return stage;
-}
-
 function createKulki(stage) {
     for (let i = 0; i < n; i++) {
         const smallBall = document.createElement("p");

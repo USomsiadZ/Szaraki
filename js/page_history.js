@@ -1,9 +1,3 @@
-function createHistoryStage() {
-    const historyStage = document.createElement("div");
-    historyStage.className = "history-stage";
-    return historyStage;
-}
-
 function zapiszDoHistorii(slowo, morfemy) {
     let historia = JSON.parse(localStorage.getItem("morfologiaHistoria")) || [];
 
@@ -22,7 +16,7 @@ function wyswietlHistorie(historyStage, sortowanie = "data-desc") {
     let historia = JSON.parse(localStorage.getItem("morfologiaHistoria")) || [];
 
     if (historia.length === 0) {
-        historyStage.innerHTML = "<p class='history-empty-msg'>Brak wpisów w historii.</p>";        return;
+        historyStage.innerHTML = "<p class='history-empty-msg'>Brak wpisów w historii.</p>"; return;
     }
 
     if (sortowanie === "data-desc") {
@@ -49,7 +43,7 @@ function wyswietlHistorie(historyStage, sortowanie = "data-desc") {
         const przycisk = document.createElement("button");
         przycisk.textContent = opcja.text;
         przycisk.className = "history-sort-btn";
-        
+
         if (sortowanie === opcja.id) {
             przycisk.classList.add("active");
         }

@@ -5,14 +5,6 @@ const dostawcy = {
     gemini: { nazwa: "Gemini (Google)", modele: ["gemini-2.5-flash", "gemini-3-flash", "gemini-3-pro"] },
     openrouter: { nazwa: "OpenRouter", modele: ["openai/gpt-4o-mini", "anthropic/claude-sonnet-4.5", "google/gemini-2.5-flash"] }
 };
-// Tworzymy pusty stage
-function createSettingsStage() {
-    const settingsStage = document.createElement("div");
-    settingsStage.className = "settings-stage";
-    settingsStage.style.display = "none";
-    return settingsStage;
-}
-
 // Odczytaj ustawienia z localStorage
 function odczytajUstawienia() {
     const zapisane = JSON.parse(localStorage.getItem("ustawieniaApi")) || {};
