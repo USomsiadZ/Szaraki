@@ -36,6 +36,7 @@ function wyswietlUstawienia(settingsStage) {
     labelDostawca.textContent = "Dostawca API:";
     panel.appendChild(labelDostawca);
 
+    // Wybór dostawcy API
     const selectDostawca = document.createElement("select");
     for (const id in dostawcy) {
         const opcja = document.createElement("option");
@@ -46,33 +47,31 @@ function wyswietlUstawienia(settingsStage) {
     }
     panel.appendChild(selectDostawca);
 
+
     const labelModel = document.createElement("label");
     labelModel.textContent = "Model:";
     panel.appendChild(labelModel);
+
+    // Wybór modelu API
     const selectModel = document.createElement("select");
     function odswiezModele(wybranyModel) {
         selectModel.innerHTML = "";
         const modele = dostawcy[selectDostawca.value].modele;
 
-        for (let i = 0; i < modele.length; i++) {
-            const model = modele[i];
-
+        modele.forEach((model) => {
             const opcja = document.createElement("option");
             opcja.value = model;
             opcja.textContent = model;
-            // Z pamięci, normalnie ogarnia to html
-            if (model === wybranyModel) {
-                opcja.selected = true;
-            }
-
+            if (model === wybranyModel) opcja.selected = true;
             selectModel.appendChild(opcja);
-        }
+        });
     }
     odswiezModele(ustawienia.model);
+    panel.appendChild(selectModel);
+
     selectDostawca.addEventListener("change", function () {
         odswiezModele("");
     });
-    panel.appendChild(selectModel);
 
     const labelKlucz = document.createElement("label");
     labelKlucz.textContent = "Klucz API:";
