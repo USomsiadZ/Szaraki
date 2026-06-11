@@ -1,8 +1,8 @@
 1. Wymagania minimalne (MVP) - 50%
 minimum 3 widoki (np. lista danych, szczegóły elementu i formularz) ✅
-komunikacja z API: jedno źródło danych, pojedyncze zapytanie fetch  ✅
-dynamiczne renderowanie danych ✅
-podstawowa obsługa błędów ✅
+komunikacja z API: jedno źródło danych, pojedyncze zapytanie fetch  
+dynamiczne renderowanie danych
+podstawowa obsługa błędów 
 podstawowa walidacja formularza \[Łukasz]
 responsywny layout (mobile-first) 
 poprawny kod bez błędów krytycznych (brana pod uwagę jest również czytelność i struktura) 
@@ -13,10 +13,10 @@ Brak realizacji któregoś z powyższych elementów może skutkować oceną nied
 Dodatkowe funkcje zwiększające złożoność aplikacji, np.:
 
 sortowanie danych wg wielu kryteriów,
-filtrowanie wg kilku parametrów, \[Oliwia]
-paginacja lub "załaduj więcej", \[Oliwia]
-zapis danych w localStorage, ✅
-edycja danych lokalnych, \[Oliwia]
+filtrowanie wg kilku parametrów,
+paginacja lub "załaduj więcej", 
+zapis danych w localStorage,
+edycja danych lokalnych, 
 przetwarzanie danych (np. agregacje, statystyki), \[Oliwia]
 obsługa wielu zapytań do API.
 Liczba i złożoność rozszerzeń wpływa na możliwą do uzyskania ocenę. Za pojedyncze rozszerzenie można uzyskać maksymalnie 5-10%, zależnie od złożoności (decyzja prowadzącego). Na ocenę bdb zalecana jest realizacja ~4 dopracowanych rozszerzeń.

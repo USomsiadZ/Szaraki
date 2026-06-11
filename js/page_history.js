@@ -62,6 +62,21 @@ function wyswietlHistorie(historyStage, sortowanie = "data-desc", ile = paginacj
 
     historyStage.appendChild(panelSortowania);
 
+    let sumaMorfemow = 0;
+    historia.forEach(wpis => {
+        sumaMorfemow = sumaMorfemow + wpis.morfemy.length;
+    });
+    const ilosc = historia.length;
+    const srednia = Math.round((sumaMorfemow / ilosc) * 10) / 10;
+
+    const panelStatystyk = document.createElement("div");
+    panelStatystyk.className = "history-statystyki-panel";
+    const tekstStatystyk = document.createElement("span");
+    tekstStatystyk.className = "history-sort-btn";
+    tekstStatystyk.textContent = `Ilość: ${ilosc} Średnia: ${srednia}`;
+    panelStatystyk.appendChild(tekstStatystyk);
+    historyStage.appendChild(panelStatystyk);
+
     const lista = document.createElement("div");
     lista.className = "history-list";
     historia.slice(0, ile).forEach(wpis => {
