@@ -14,9 +14,11 @@ function createHeader() {
     menuHamburgerLabel.htmlFor = "menu-toggle";
     menuHamburgerLabel.className = "hamburger-icon";
     menuHamburgerLabel.textContent = "☰";
+    menuHamburgerLabel.setAttribute("aria-label", "Otwórz menu");
 
     const topMenu = document.createElement("nav");
     topMenu.className = "top-menu";
+    topMenu.setAttribute("aria-label", "Menu główne");
 
     const menuLinkMain = document.createElement("button");
     menuLinkMain.id = "menu-home";

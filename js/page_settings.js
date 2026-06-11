@@ -33,11 +33,13 @@ function wyswietlUstawienia(settingsStage) {
     panel.appendChild(tytul);
 
     const labelDostawca = document.createElement("label");
+    labelDostawca.htmlFor = "ustawienia-dostawca";
     labelDostawca.textContent = "Dostawca API:";
     panel.appendChild(labelDostawca);
 
     // Wybór dostawcy API
     const selectDostawca = document.createElement("select");
+    selectDostawca.id = "ustawienia-dostawca";
     for (const id in dostawcy) {
         const opcja = document.createElement("option");
         opcja.value = id;
@@ -49,11 +51,13 @@ function wyswietlUstawienia(settingsStage) {
 
 
     const labelModel = document.createElement("label");
+    labelModel.htmlFor = "ustawienia-model";
     labelModel.textContent = "Model:";
     panel.appendChild(labelModel);
 
     // Wybór modelu API
     const selectModel = document.createElement("select");
+    selectModel.id = "ustawienia-model";
     function odswiezModele(wybranyModel) {
         selectModel.innerHTML = "";
         const modele = dostawcy[selectDostawca.value].modele;
@@ -74,10 +78,12 @@ function wyswietlUstawienia(settingsStage) {
     });
 
     const labelKlucz = document.createElement("label");
+    labelKlucz.htmlFor = "ustawienia-klucz";
     labelKlucz.textContent = "Klucz API:";
     panel.appendChild(labelKlucz);
 
     const inputKlucz = document.createElement("input");
+    inputKlucz.id = "ustawienia-klucz";
     inputKlucz.type = "password";
     inputKlucz.value = ustawienia.klucz;
     panel.appendChild(inputKlucz);

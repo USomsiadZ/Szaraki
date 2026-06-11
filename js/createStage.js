@@ -7,6 +7,8 @@ function createMainStage() {
     inputBall.className = "ball";
     inputBall.value = "unhappiness";
     inputBall.setAttribute("autocomplete", "off");
+    inputBall.setAttribute("aria-label", "Wpisz słowo do morfologicznego rozbicia");
+    inputBall.setAttribute("aria-live", "polite");
     stage.appendChild(inputBall);
 
     return stage;

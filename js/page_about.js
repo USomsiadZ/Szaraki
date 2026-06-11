@@ -90,8 +90,10 @@ function wyswietlONas(aboutStage) {
 	formularz.className = "contact-form";
 
 	const labelImie = document.createElement("label");
+	labelImie.htmlFor = "kontakt-imie";
 	labelImie.textContent = "Imię i nazwisko";
 	const inputImie = document.createElement("input");
+	inputImie.id = "kontakt-imie";
 	inputImie.type = "text";
 	inputImie.placeholder = "np. Andrzej Duda";
 	inputImie.className = "form-input";
@@ -100,16 +102,20 @@ function wyswietlONas(aboutStage) {
 	inputImie.title = "Nazwa nie może zawierać znaków specjalnych.";
 
 	const labelEmail = document.createElement("label");
+	labelEmail.htmlFor = "kontakt-email";
 	labelEmail.textContent = "E-mail";
 	const inputEmail = document.createElement("input");
+	inputEmail.id = "kontakt-email";
 	inputEmail.type = "email";
 	inputEmail.placeholder = "np. student@pb.edu.pl";
 	inputEmail.className = "form-input";
 	inputEmail.required = true;
 
 	const labelTresc = document.createElement("label");
+	labelTresc.htmlFor = "kontakt-tresc";
 	labelTresc.textContent = "Treść wiadomości";
 	const inputTresc = document.createElement("textarea");
+	inputTresc.id = "kontakt-tresc";
 	inputTresc.placeholder = "Twoja wiadomość (max 256 znaków)";
 	inputTresc.className = "form-input form-textarea";
 	inputTresc.maxLength = 256;
@@ -122,6 +128,7 @@ function wyswietlONas(aboutStage) {
 
 	const komunikat = document.createElement("div");
 	komunikat.className = "formularzKomunikat";
+	komunikat.setAttribute("aria-live", "polite");
 	komunikat.textContent = "Wiadomość została wysłana!";
 
 	formularz.addEventListener("submit", (e) => {

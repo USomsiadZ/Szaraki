@@ -25,16 +25,16 @@ Projekt został zrealizowany w ramach przedmiotu **Wprowadzenie do aplikacji WWW
 
 * **Morfologiczny Rozbiór Słów:** Integracja z wieloma dostawcami AI w celu dokładnego podziału wyrazów.
 * **Dynamiczna Wizualizacja:** Prezentacja morfemów za pomocą animowanych elementów graficznych układających się w okrąg (tryb "Kulek").
-![alt text](image-1.png)
+![alt text](dokumentacja_img/image-1.png)
 * **Historia Wyszukiwań:** Przechowywanie historii zapytań w pamięci przeglądarki (`localStorage`) z zaawansowanymi opcjami sortowania:
     * Najnowsze / Najstarsze
     * Alfabetycznie
     * Ilość morfemów
-![alt text](image-2.png)
+![alt text](dokumentacja_img/image-2.png)
 * **Panel Ustawień:** Elastyczna konfiguracja wyboru dostawcy API (OpenAI, Gemini, Claude, OpenRouter), klucza autoryzacyjnego oraz modelu.
-![alt text](image-3.png)
+![alt text](dokumentacja_img/image-3.png)
 * **Responsywny Design:** Pełna adaptacja interfejsu do ekranów mobilnych, standardowych oraz monitorów Ultra-Wide (media queries).
-![alt text](giff.gif)
+![alt text](dokumentacja_img/giff.gif)
 
 ---
 
